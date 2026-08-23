@@ -1,0 +1,50 @@
+/**
+ * EcuNexo Licensing — tema gluBox (data-theme + data-mode en <html>).
+ * @see https://solivoo.github.io/gluebox/guide/installation.html
+ */
+@import './styles/ecu-form-tokens.css';
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: var(--glb-font-family);
+}
+
+body {
+  margin: 0 auto;
+  background: var(--glb-app-bg);
+  color: var(--glb-app-text);
+}
+
+/* Puente --c-* → tokens gluBox (páginas aún en migración desde Syncfusion) */
+:root {
+  /* glubox Sidebar usa var(--glb-font-family); su default es Poppins.
+     Se redefine aquí (después de glubox/style.css) para alinear con Inter. */
+  --glb-font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --c-surface: var(--glb-surface);
+  --c-surface-lowest: var(--glb-surface);
+  --c-surface-subtle: color-mix(in srgb, var(--glb-app-bg) 55%, var(--glb-surface));
+  --c-surface-container-high: color-mix(in srgb, var(--glb-border) 35%, var(--glb-surface));
+  --c-surface-container-highest: color-mix(in srgb, var(--glb-primary) 8%, var(--glb-surface));
+  --c-background: var(--glb-app-bg);
+  --c-text-main: var(--glb-text);
+  --c-on-surface: var(--glb-text);
+  --c-text-muted: var(--glb-muted);
+  --c-primary: var(--glb-primary);
+  --c-on-primary: var(--glb-primary-fg);
+  --c-primary-container: var(--glb-primary);
+  --c-tertiary: var(--glb-primary);
+  --c-border: var(--glb-border);
+  --c-outline-variant: var(--glb-border);
+  --c-code-bg: color-mix(in srgb, var(--glb-muted) 12%, var(--glb-surface));
+  --c-code-text: var(--glb-text);
+}
+
+/* Primario: texto claro sobre el azul/violeta. En dark, negro sobre azul no compagina. */
+html[data-mode="dark"] {
+  --glb-primary-fg: #fff;
+  --shell-on-primary: #fff;
+}

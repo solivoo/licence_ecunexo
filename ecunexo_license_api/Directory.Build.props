@@ -1,0 +1,3 @@
+<Project>
+  <Import Project="..\ecunexo_api\Directory.Build.props" />
+</Project>

@@ -1,0 +1,105 @@
+.welcome-onboarding__error {
+  margin: 0 0 1rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  background: color-mix(in srgb, #ef4444 12%, transparent);
+  color: #991b1b;
+  font-size: 0.875rem;
+  border: 1px solid color-mix(in srgb, #ef4444 25%, transparent);
+}
+
+html[data-mode="dark"] .welcome-onboarding__error {
+  background: color-mix(in srgb, #ef4444 12%, transparent);
+  color: #fecaca;
+  border-color: color-mix(in srgb, #ef4444 25%, transparent);
+}
+
+.welcome-onboarding__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.welcome-onboarding__link--footer {
+  display: inline-flex;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--c-primary, var(--shell-primary, #6d28d9));
+}
+
+html[data-mode="dark"] .welcome-onboarding__link--footer {
+  color: var(--c-primary, #a78bfa);
+}
+
+.welcome-onboarding__footer-muted {
+  opacity: 0.85;
+}
+
+.welcome-onboarding__footer-action {
+  font-weight: 600;
+}
+
+.welcome-onboarding__header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-onboarding__header-row .login-page__brand {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.welcome-onboarding__header-row .login-page__link-muted {
+  margin-top: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+.welcome-onboarding__result {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--c-outline, #64748b) 35%, transparent);
+}
+
+.welcome-onboarding__result-title {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.welcome-onboarding__copy-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.welcome-onboarding__code {
+  flex: 1;
+  min-width: 0;
+  word-break: break-all;
+  font-size: 0.8rem;
+}
+
+.login-page__select {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--shell-border, #e2e8f0);
+  background: var(--shell-surface, #fff);
+  color: var(--shell-text, #1b1b24);
+  font: inherit;
+  font-size: 0.875rem;
+}
+
+html[data-mode="dark"] .login-page__select {
+  background: var(--shell-surface, #1a1d27);
+  border-color: var(--shell-border, #2d3348);
+  color: var(--shell-text, #f1f5f9);
+}

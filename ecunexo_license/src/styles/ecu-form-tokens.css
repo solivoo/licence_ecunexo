@@ -1,0 +1,160 @@
+/**
+ * Tokens EcuNexo para formularios propios (labels nativos, no componentes Syncfusion).
+ */
+.ecu-sf-dialog-skin,
+.ecu-sf-form-skin {
+  --c-background: var(--glb-app-bg);
+  --c-text-main: var(--glb-text);
+  --c-on-surface: var(--glb-text);
+  --c-text-muted: var(--glb-muted);
+  --c-primary: var(--glb-primary);
+  --c-primary-container: var(--glb-primary);
+  --c-border: var(--glb-border);
+  --c-surface-subtle: color-mix(in srgb, var(--glb-app-bg) 55%, var(--glb-surface));
+  --c-surface-lowest: var(--glb-surface);
+  --c-outline-variant: var(--glb-border);
+  --glb-field-canvas: var(--glb-surface);
+  --ecu-field-height: 2.5rem;
+  --ecu-field-font-size: 0.9375rem;
+  --ecu-field-padding-x: 0.75rem;
+}
+
+.ecu-sf-dialog-skin {
+  padding: 0.25rem 0.5rem 0.75rem;
+}
+.ecu-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.ecu-form-field__label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--c-on-surface, var(--shell-text));
+}
+
+.ecu-form-field__hint {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--c-text-muted, var(--shell-muted));
+}
+
+.ecu-sf-form-skin .ecu-form-field__input,
+.ecu-sf-dialog-skin .ecu-form-field__input {
+  width: 100%;
+  box-sizing: border-box;
+  height: var(--ecu-field-height);
+  min-height: var(--ecu-field-height);
+  padding: 0 var(--ecu-field-padding-x);
+  border: 1px solid var(--c-outline-variant, var(--shell-border));
+  border-radius: 0.5rem;
+  background: var(--c-surface-lowest, var(--shell-surface));
+  color: var(--c-on-surface, var(--shell-text));
+  font-family: inherit;
+  font-size: var(--ecu-field-font-size);
+  line-height: 1.25;
+}
+
+.ecu-sf-form-skin .ecu-form-field__textarea,
+.ecu-sf-dialog-skin .ecu-form-field__textarea {
+  height: auto;
+  min-height: 6rem;
+  padding: 0.5rem var(--ecu-field-padding-x);
+  line-height: 1.45;
+  resize: vertical;
+}
+
+.ecu-sf-form-skin .ecu-form-field__input-password-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.ecu-sf-form-skin .ecu-form-field__input-password-wrap .ecu-form-field__input {
+  padding-right: 2.5rem;
+}
+
+.ecu-sf-form-skin .ecu-form-field__password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0.35rem;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--c-text-muted, var(--shell-muted));
+  cursor: pointer;
+}
+
+.ecu-sf-dialog-skin .ecu-inline-check span {
+  color: var(--c-on-surface);
+}
+
+.ecu-sf-dialog-skin input[type='checkbox'] {
+  accent-color: var(--c-primary);
+}
+
+/**
+ * Stack de cards en formularios (sin card madre).
+ * Usado por cliente, planes, capacitación y emitir licencia.
+ */
+form.ecu-sf-form-skin,
+.issue-license-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.ecu-dialog-form.ecu-dialog-form--glu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.issue-license-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.issue-license-subpanel {
+  margin: 0;
+  padding: 1.15rem 1.2rem;
+  border: 1px solid var(--shell-border, var(--glb-border));
+  border-radius: 12px;
+  background: var(--shell-surface, var(--glb-surface));
+  --glb-field-canvas: var(--shell-surface, var(--glb-surface));
+}
+
+.issue-license-form-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 1.15rem 1.2rem;
+  border: 1px solid var(--shell-border, var(--glb-border));
+  border-radius: 12px;
+  background: var(--shell-surface, var(--glb-surface));
+}
+
+.issue-license-form-footer--end {
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.issue-license-form-footer--end .ecu-btn,
+.issue-license-form-footer--end button {
+  width: auto;
+}

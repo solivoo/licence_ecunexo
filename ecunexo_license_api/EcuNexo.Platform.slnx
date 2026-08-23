@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/EcuNexo.Platform.Api/EcuNexo.Platform.Api.csproj" />
+    <Project Path="src/EcuNexo.Platform.Business/EcuNexo.Platform.Business.csproj" />
+    <Project Path="src/EcuNexo.Platform.Data/EcuNexo.Platform.Data.csproj" />
+    <Project Path="src/EcuNexo.Platform.Core/EcuNexo.Platform.Core.csproj" />
+  </Folder>
+  <Folder Name="/shared/">
+    <Project Path="../ecunexo_api/src/EcuNexo.Core/EcuNexo.Core.csproj" />
+  </Folder>
+</Solution>
