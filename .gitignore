@@ -51,3 +51,9 @@ coverage/
 *.swp
 *~
 .cache/
+
+# Feed local EcuNexo.Core (build de Platform)
+!nuget-local/
+!nuget-local/**
+!nuget-local/*.nupkg
+!nuget-local/*.snupkg
