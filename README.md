@@ -9,3 +9,7 @@ ecunexo_license_api/   # API .NET — puerto 5090, BD licensing_ecunexo
 ecunexo_license/       # SPA operadores (Vite)
 nuget-local/           # Feed local EcuNexo.Core
 ```
+
+## Contributors
+
+- [solivoo](https://github.com/solivoo) — Sergio Olivo
