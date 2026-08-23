@@ -1,0 +1,53 @@
+# Licencias EcuNexo — Platform API + SPA
+# Repo: licence_ecunexo
+
+# Secretos y config local
+.env
+.env.*
+!.env*.example
+*.pem
+dev-license-private.pem
+appsettings.*.local.json
+*.received.*
+
+# IDE / OS
+.idea/
+.vs/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json.example
+*.user
+*.suo
+*.userosscache
+.DS_Store
+Thumbs.db
+
+# .NET
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+artifacts/
+*.dll
+*.pdb
+*.exe
+*.log
+*.tlog
+project.lock.json
+*.nupkg
+*.snupkg
+TestResult.xml
+[Tt]est[Rr]esult*/
+
+# Frontend (ecunexo_license)
+node_modules/
+dist/
+dist-ssr/
+*.local
+.pnpm-store/
+coverage/
+
+# Misc
+*.swp
+*~
+.cache/
