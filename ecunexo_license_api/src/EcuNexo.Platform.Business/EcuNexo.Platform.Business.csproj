@@ -2,7 +2,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EcuNexo.Platform.Core\EcuNexo.Platform.Core.csproj" />
-    <ProjectReference Include="..\..\..\ecunexo_api\src\EcuNexo.Core\EcuNexo.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

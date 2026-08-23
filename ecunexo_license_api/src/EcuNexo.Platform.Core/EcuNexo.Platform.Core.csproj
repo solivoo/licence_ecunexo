@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\ecunexo_api\src\EcuNexo.Core\EcuNexo.Core.csproj" />
+    <PackageReference Include="EcuNexo.Core" />
   </ItemGroup>
 
   <PropertyGroup>

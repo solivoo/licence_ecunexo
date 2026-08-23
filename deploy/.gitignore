@@ -1,0 +1,4 @@
+# Claves de firma (NO versionar PEM)
+keys/
+deploy/.env
+.env

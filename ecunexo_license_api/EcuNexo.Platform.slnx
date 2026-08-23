@@ -5,7 +5,4 @@
     <Project Path="src/EcuNexo.Platform.Data/EcuNexo.Platform.Data.csproj" />
     <Project Path="src/EcuNexo.Platform.Core/EcuNexo.Platform.Core.csproj" />
   </Folder>
-  <Folder Name="/shared/">
-    <Project Path="../ecunexo_api/src/EcuNexo.Core/EcuNexo.Core.csproj" />
-  </Folder>
 </Solution>

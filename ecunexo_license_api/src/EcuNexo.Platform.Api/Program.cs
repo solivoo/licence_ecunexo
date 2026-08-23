@@ -1,15 +1,16 @@
 using Asp.Versioning;
-using EcuNexo.Platform.Business;
-using EcuNexo.Platform.Business.Abstractions;
-using EcuNexo.Platform.Business.Tenancy;
-using EcuNexo.Platform.Data.Licensing;
 using EcuNexo.Platform.Api.Configuration;
 using EcuNexo.Platform.Api.Development;
 using EcuNexo.Platform.Api.Endpoints.V1;
-using EcuNexo.Platform.Api.Security;
 using EcuNexo.Platform.Api.Licensing;
+using EcuNexo.Platform.Api.Security;
 using EcuNexo.Platform.Api.Tenancy;
+using EcuNexo.Platform.Business;
+using EcuNexo.Platform.Business.Abstractions;
 using EcuNexo.Platform.Business.Licensing;
+using EcuNexo.Platform.Business.Tenancy;
+using EcuNexo.Platform.Data.Licensing;
+using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -52,11 +53,19 @@ builder.Services.AddSingleton<IPlatformJwtAccessTokenFactory, PlatformJwtAccessT
 builder.Services.AddPlatformLicensingBusiness();
 builder.Services.AddLicensingData(licensingConnection);
 
+var corsOrigins = ParseCorsOrigins(builder.Configuration);
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(
-        "PlatformDevSpa",
-        static policy =>
+        "PlatformSpa",
+        policy =>
+        {
+            if (corsOrigins.Length > 0)
+            {
+                policy.WithOrigins(corsOrigins).AllowAnyHeader().AllowAnyMethod();
+                return;
+            }
+
             policy
                 .SetIsOriginAllowed(static origin =>
                 {
@@ -74,16 +83,13 @@ builder.Services.AddCors(options =>
                         || uri.Host.Equals("127.0.0.1", StringComparison.OrdinalIgnoreCase);
                 })
                 .AllowAnyHeader()
-                .AllowAnyMethod());
+                .AllowAnyMethod();
+        });
 });
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseCors("PlatformDevSpa");
-}
-
+app.UseCors("PlatformSpa");
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -94,6 +100,36 @@ app.MapGet("/", () => Results.Ok(new { service = "EcuNexo.Platform", status = "o
 
 app.MapPlatformLicensingEndpointsV1();
 
+var migrateOnStartup = app.Configuration.GetValue(
+    "Database:MigrateOnStartup",
+    defaultValue: app.Environment.IsDevelopment());
+if (migrateOnStartup)
+{
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<LicensingDbContext>();
+    await db.Database.MigrateAsync(CancellationToken.None).ConfigureAwait(false);
+}
+
 await DevelopmentLicensingSeeder.EnsureAsync(app, CancellationToken.None).ConfigureAwait(false);
 
 await app.RunAsync().ConfigureAwait(false);
+
+static string[] ParseCorsOrigins(IConfiguration configuration)
+{
+    var fromArray = configuration.GetSection("Cors:AllowedOrigins").Get<string[]>();
+    if (fromArray is { Length: > 0 })
+    {
+        return fromArray
+            .Select(static o => o.Trim())
+            .Where(static o => o.Length > 0)
+            .ToArray();
+    }
+
+    var csv = configuration["Cors:AllowedOrigins"];
+    if (string.IsNullOrWhiteSpace(csv))
+    {
+        return [];
+    }
+
+    return csv.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+}

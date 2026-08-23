@@ -3,7 +3,6 @@
   <ItemGroup>
     <ProjectReference Include="..\EcuNexo.Platform.Core\EcuNexo.Platform.Core.csproj" />
     <ProjectReference Include="..\EcuNexo.Platform.Business\EcuNexo.Platform.Business.csproj" />
-    <ProjectReference Include="..\..\..\ecunexo_api\src\EcuNexo.Core\EcuNexo.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
