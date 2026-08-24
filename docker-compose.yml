@@ -45,6 +45,11 @@ services:
       Licensing__ProvisioningEncryptionKey: ${PROVISIONING_ENCRYPTION_KEY:?set PROVISIONING_ENCRYPTION_KEY}
       LicenseSigning__PrivateKeyPath: ${LICENSE_PRIVATE_KEY_PATH:-/keys/license-private.pem}
       Cors__AllowedOrigins: ${CORS_ALLOWED_ORIGINS:-}
+      # Primer operador (solo si la BD no tiene ninguno). Cámbialo tras el primer login.
+      Bootstrap__Enabled: ${BOOTSTRAP_OPERATOR_ENABLED:-true}
+      Bootstrap__Email: ${BOOTSTRAP_OPERATOR_EMAIL:-admin@ecunexo.local}
+      Bootstrap__Password: ${BOOTSTRAP_OPERATOR_PASSWORD:-CambiaEstoYa123!}
+      Bootstrap__DisplayName: ${BOOTSTRAP_OPERATOR_NAME:-Administrador}
     volumes:
       - ${LICENSE_KEYS_HOST_PATH:?set LICENSE_KEYS_HOST_PATH}:/keys:ro
     ports:
@@ -57,7 +62,8 @@ services:
       context: .
       dockerfile: ecunexo_license/Dockerfile
       args:
-        VITE_API_BASE_URL: ${VITE_API_BASE_URL:?set VITE_API_BASE_URL public URL of API}
+        # Vacío = mismo origen (Nginx proxy /api → api). Obligatorio detrás de Cloudflare HTTPS.
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-}
         VITE_LICENSE_SYNCFUSION: ${VITE_LICENSE_SYNCFUSION:-}
         VITE_LOGNERD_ENABLE_CONSOLE: ${VITE_LOGNERD_ENABLE_CONSOLE:-false}
         VITE_LOGNERD_LEVEL: ${VITE_LOGNERD_LEVEL:-WARN}

@@ -111,6 +111,7 @@ if (migrateOnStartup)
 }
 
 await DevelopmentLicensingSeeder.EnsureAsync(app, CancellationToken.None).ConfigureAwait(false);
+await BootstrapOperatorSeeder.EnsureAsync(app, CancellationToken.None).ConfigureAwait(false);
 
 await app.RunAsync().ConfigureAwait(false);
 
