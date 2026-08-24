@@ -118,10 +118,6 @@ export function CardLogin() {
           Solicitar acceso
         </Button>
       </div>
-
-      <p className="login-page__muted login-page__muted--compact">
-        Dev: admin.licencias@ecunexo.local / Licencias123!
-      </p>
     </form>
   )
 }
