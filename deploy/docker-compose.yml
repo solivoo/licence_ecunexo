@@ -1,6 +1,6 @@
 # Portainer / Docker Compose — Platform Licencias EcuNexo
 # Stack file: subir este compose + .env en Portainer (Stacks).
-# Build context = raíz del repo licence_ecunexo (carpeta Licencias).
+# Build context = raíz del repo license_ecunexo (carpeta Licencias).
 
 name: ecunexo-licencias
 
@@ -60,7 +60,7 @@ services:
       dockerfile: ecunexo_license/Dockerfile
       args:
         VITE_API_BASE_URL: ${VITE_API_BASE_URL:?set VITE_API_BASE_URL public URL of API}
-        VITE_LICENCE_SYNCFUSION: ${VITE_LICENCE_SYNCFUSION:-}
+        VITE_LICENSE_SYNCFUSION: ${VITE_LICENSE_SYNCFUSION:-}
         VITE_LOGNERD_ENABLE_CONSOLE: ${VITE_LOGNERD_ENABLE_CONSOLE:-false}
         VITE_LOGNERD_LEVEL: ${VITE_LOGNERD_LEVEL:-WARN}
     image: ${LICENSE_SPA_IMAGE:-ecunexo-license-spa:1.0.0}

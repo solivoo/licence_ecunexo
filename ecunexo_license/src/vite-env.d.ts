@@ -2,7 +2,7 @@
 
 interface ImportMetaEnv {
   readonly VITE_API_BASE_URL: string
-  readonly VITE_LICENCE_SYNCFUSION: string
+  readonly VITE_LICENSE_SYNCFUSION: string
 }
 
 interface ImportMeta {

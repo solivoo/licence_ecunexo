@@ -1,4 +1,4 @@
-# licence_ecunexo
+# license_ecunexo
 
 Plataforma de licenciamiento EcuNexo: API de emisión (`ecunexo_license_api`) y panel de operadores (`ecunexo_license`).
 
