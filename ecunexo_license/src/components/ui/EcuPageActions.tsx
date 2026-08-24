@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { ReactElement, ReactNode } from 'react'
 import { Button, PageActionsMenu, type PageActionItem } from 'glubox'
 import './ecuPageActions.css'
 
@@ -15,6 +15,17 @@ function activate(item: PageActionItem, props: EcuPageActionsProps): void {
   if (item.disabled) return
   props.onActionSelect?.(item)
   if (item.route) props.onNavigate?.(item.route)
+}
+
+function toMenuRenderIcon(
+  renderIcon: EcuPageActionsProps['renderIcon']
+): ((name: string, className: string) => ReactElement | null) | undefined {
+  if (!renderIcon) return undefined
+  return (name, className) => {
+    const node = renderIcon(name, className)
+    if (node == null || typeof node === 'boolean') return null
+    return node as ReactElement
+  }
 }
 
 export function EcuPageActions(props: EcuPageActionsProps) {
@@ -45,7 +56,7 @@ export function EcuPageActions(props: EcuPageActionsProps) {
           items={[...items]}
           variant={variant}
           triggerLabel={triggerLabel}
-          renderIcon={renderIcon}
+          renderIcon={toMenuRenderIcon(renderIcon)}
           onNavigate={props.onNavigate}
           onActionSelect={props.onActionSelect}
         />
