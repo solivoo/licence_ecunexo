@@ -1,5 +1,5 @@
-# Preferir docker-compose.yml en la raíz del repo (Portainer default).
-# Este archivo queda como copia alineada por si se usa Compose path: deploy/docker-compose.yml
+# Portainer: Compose path por defecto = docker-compose.yml (raíz del repo)
+# Build context = raíz de license_ecunexo
 
 name: ecunexo-licencias
 
@@ -23,7 +23,7 @@ services:
 
   api:
     build:
-      context: ..
+      context: .
       dockerfile: ecunexo_license_api/Dockerfile
     image: ${LICENSE_API_IMAGE:-ecunexo-license-api:1.0.0}
     restart: unless-stopped
@@ -53,7 +53,7 @@ services:
 
   spa:
     build:
-      context: ..
+      context: .
       dockerfile: ecunexo_license/Dockerfile
       args:
         VITE_API_BASE_URL: ${VITE_API_BASE_URL:?set VITE_API_BASE_URL public URL of API}

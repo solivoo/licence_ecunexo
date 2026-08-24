@@ -21,6 +21,6 @@ deploy/                # Docker Compose + Portainer
    `openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out /opt/ecunexo/licencias/keys/license-private.pem`
    `openssl rsa -in .../license-private.pem -pubout -out .../license-public.pem`
 2. Copia `deploy/.env.example` → `.env` (o Env de Portainer) y rellena peppers / JWT / passwords.
-3. Stack Compose: archivo `deploy/docker-compose.yml` (build context = raíz del repo).
+3. Stack Compose: archivo **`docker-compose.yml`** en la raíz (default Portainer). Alternativa: `deploy/docker-compose.yml`.
 4. Variables críticas: `ISSUE_PEPPER`, `VALIDATION_PEPPER`, `JWT_SIGNING_KEY`, `PROVISIONING_ENCRYPTION_KEY`, `LICENSE_KEYS_HOST_PATH`, `VITE_API_BASE_URL`, `CORS_ALLOWED_ORIGINS`.
 5. La clave **pública** y el `VALIDATION_PEPPER` van al producto Cliente (no a este stack).
