@@ -24,7 +24,6 @@ public static class BootstrapOperatorSeeder
         var displayName = cfg["DisplayName"]?.Trim();
         if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
         {
-            app.Logger.LogWarning("Bootstrap operador omitido: Email/Password vacíos.");
             return;
         }
 
@@ -44,15 +43,10 @@ public static class BootstrapOperatorSeeder
             PlatformOperatorRole.SuperAdmin);
         if (created.IsFailure)
         {
-            app.Logger.LogError(
-                "Bootstrap operador falló: {Code} {Message}",
-                created.Error?.Code,
-                created.Error?.Message);
             return;
         }
 
         db.Operators.Add(created.Value!);
         await db.SaveChangesAsync(ct).ConfigureAwait(false);
-        app.Logger.LogInformation("Bootstrap: operador SuperAdmin creado ({Email}).", email);
     }
 }
